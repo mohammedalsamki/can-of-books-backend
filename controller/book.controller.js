@@ -13,7 +13,7 @@ const { userModel, seedUser} = require('../models/user.model');
 //         if (error) {
 //             res.send(error)
 //         } else {
-//             res.json(user)
+//             res.json(users)
 //         }
 //     });
 
