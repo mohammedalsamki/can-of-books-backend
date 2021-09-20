@@ -1,28 +1,43 @@
 "use strict";
 
-const { req, res } = require('express');
-const { model } = require('mongoose');
-const { userModel, seedUser} = require('../models/user.model');
+const { request } = require('express');
+const bookModel=require('../models/book.model')
 
-// const hadBooks = (req, res) => {
-//     const {email}  = req.query;
-//     console.log(req.query.email, "hellow")
-//     console.log(userModel);
 
-//     userModel.find({ myemail: email }, (error, users) => {
-//         if (error) {
-//             res.send(error)
-//         } else {
-//             res.json(users)
-//         }
-//     });
-
-// }
-console.log(userModel)
-// seedUser();
-let hadBooks = (req, res) => {
-    userModel.find().then(data => {
-        res.json(data);
+const getBooks=(req,res)=>{
+    bookModel.find({email:req.params.email},(err,bookData)=>{
+        res.json(bookData)
     })
 }
-module.exports = hadBooks;
+const creatsBook =(req,res)=>{
+    const { title, description, email, status }=req.body;
+
+    const newBook= new bookModel({
+        title,description,email,status
+    });
+    newBook.save();
+    res.json(newBook);
+}
+const deleteBooks=(req,res)=>{
+    const bookId= req.params.book_id;
+    bookModel.deleteOne({_id:bookId},(err,deleteBooks)=>{
+        if(err){alert(`you have err in backend`)
+    }
+    else{res.json(deleteBooks);}
+    });
+}
+
+const updateBooks =(req,res)=>{
+    const{title,description,email,status}=req.body;
+    const bookId=req.params.book_id;
+    bookModel.findByIdAndUpdate({_id:bookId},{title,des,email,status},{new:true},(err,updatebook)=>{
+        res.json(updatebook);
+    });
+}
+
+module.exports={
+    getBooks,
+    creatsBook,
+    deleteBooks,
+    updateBooks
+}
