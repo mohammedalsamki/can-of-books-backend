@@ -32,10 +32,10 @@ app.get('/',(req,res)=>{
   res.send('hi')
 })
 
-app.get("/books/data",getBooks)
-app.post('/books', creatsBook);
-app.delete('/books/:book_id', deleteBooks);
-app.put('/books/:book_id',updateBooks)
+app.get("/book-list",getBooks)
+app.post('/create-book', creatsBook);
+app.delete('/delete-book/:book_id', deleteBooks);
+app.put('/update-book/:book_id',updateBooks)
 
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
