@@ -3,13 +3,13 @@
 const mongoose = require ('mongoose');
 
 const bookSchema = new mongoose.Schema({
-    title:{type: String},
-    description:{type:String},
-    status:{type:String},
-    email:{type:String},
+    title:String,
+    description:String,
+    status:String,
+    email:String,
     
 });
-const bookModel = mongoose.model("Book", bookSchema);
+const bookModel = mongoose.model('Book', bookSchema);
 
 
 module.exports=bookModel;
