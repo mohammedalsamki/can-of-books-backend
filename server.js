@@ -26,12 +26,13 @@ db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
   console.log("Connected successfully");
 });
-   
+app.use(express.json());
+app.use(cors());
 app.get('/',(req,res)=>{
   res.send('hi')
 })
 
-app.get("/books/email",getBooks)
+app.get("/books/data",getBooks)
 app.post('/books', creatsBook);
 app.delete('/books/:book_id', deleteBooks);
 app.put('/books/:book_id',updateBooks)
