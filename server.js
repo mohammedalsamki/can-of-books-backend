@@ -16,10 +16,11 @@ const PORT = process.env.PORT || 3001;
 const MONGO_SERVER =process.env.MONGO_DB_URL;
 // solve 
 
-// mongoose.connect(`${MONGO_SERVER}/Book`,{useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect( 
-  `mongodb+srv://sa2331996:sa2331996@cluster0.lqwfl.mongodb.net/Books?retryWrites=true&w=majority`, 
-  { useNewUrlParser: true, useUnifiedTopology: true } );
+mongoose.connect(`${MONGO_SERVER}/Book`,{useNewUrlParser: true, useUnifiedTopology: true});
+
+// mongoose.connect( 
+//   `mongodb+srv://sa2331996:sa2331996@cluster0.lqwfl.mongodb.net/Books?retryWrites=true&w=majority`, 
+//   { useNewUrlParser: true, useUnifiedTopology: true } );
 
   const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));

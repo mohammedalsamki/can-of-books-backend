@@ -10,18 +10,17 @@ const getBooks=(req,res)=>{
     })
 }
 const creatsBook =(req,res)=>{
-    const { title, description, email, status }=req.body;
+    const bookData=req.body;
 
-    const newBook= new bookModel({
-        title,description,email,status
-    });
+    const newBook= new bookModel(bookData);
     newBook.save();
     res.json(newBook);
 }
 const deleteBooks=(req,res)=>{
-    const bookId= req.params.book_id;
-    bookModel.deleteOne({_id:bookId},(err,deleteBooks)=>{
-        if(err){alert(`you have err in backend`)
+    const bookId= req.params.id;
+    bookModel.findByIdAndDelete({_id:bookId},(err,deleteBooks)=>{
+        if(err){
+            console.log('aletr error')
     }
     else{res.json(deleteBooks);}
     });
