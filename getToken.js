@@ -3,7 +3,7 @@
 const jwks_Client = require('jwks-rsa');
 
 const clients = jwks_Client({
-  jwksUri: 'https://dev-6xlimb1s.us.auth0.com/.well-known/jwks.json'
+  jwksUri: `${process.env.YOKEN_ATH}`
 });
 
 module.exports = (header, callback) => {
