@@ -18,6 +18,10 @@ app.use(cors());
 
 mongoose.connect(process.env.MONGO_DB_URL);
 
+const PORT = process.env.PORT || 3001;
+const MONGO_SERVER =process.env.MONGO_DB_URL;
+// solve 
+
 
 const databaseCheck = mongoose.connection;
 databaseCheck.on('database error', console.error.bind(console, 'connection fail'));
